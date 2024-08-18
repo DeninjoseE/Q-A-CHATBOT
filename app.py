@@ -78,7 +78,7 @@ else:
 st.title("QA Chatbot with BERT-Large")
 
 # Context input
-context_input = st.text_area("Set the context:", placeholder="Enter context or leave blank to keep previous context.")
+context_input = st.text_area("Set the context:", placeholder="Enter a context/paragraph(any language), then click "Update context" .")
 if st.button("Update Context"):
     st.session_state.context = context_input
     st.write("Context updated.")
