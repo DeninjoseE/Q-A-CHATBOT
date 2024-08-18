@@ -15,7 +15,7 @@ if 'show_history' not in st.session_state:
 if 'question_input' not in st.session_state:
     st.session_state.question_input = ""
 
-st.set_page_config(page_title="QA Chatbot with BERT-Language Large model")
+st.set_page_config(page_title="Q/A Chatbot with BERT-Language Large model")
 
 # Add custom CSS for background image and centralized text
 image_path = "APP_PHOTO.jpg"  # Adjust the path as needed
