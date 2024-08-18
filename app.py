@@ -14,6 +14,24 @@ if 'show_history' not in st.session_state:
 if 'question_input' not in st.session_state:
     st.session_state.question_input = ""
 
+st.set_page_config(page_title="QA Chatbot with BERT-Large")
+
+# Add custom CSS for background image
+st.markdown(
+    """
+    <style>
+    .reportview-container {
+        background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGbOgI3l1ybLZe4g1B3HMKuhqgyKZiNEkn_Q&s") no-repeat center center fixed;
+        background-size: cover;
+    }
+    .sidebar .sidebar-content {
+        background: rgba(0, 0, 0, 0.3); /* Optional: to give some transparency to the sidebar */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 st.title("QA Chatbot with BERT-Large")
 
 # Context input
