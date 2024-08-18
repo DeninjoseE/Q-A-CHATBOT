@@ -8,19 +8,21 @@ qa_pipeline = pipeline("question-answering", model="bert-large-uncased-whole-wor
 
 # Function to take microphone input and convert it to text
 def get_audio_input():
-    recognizer = sr.Recognizer()
-    with sr.AudioFile('temp.wav') as source:
-        st.info("Listening...")
-        audio = recognizer.record(source)
-        try:
-            query = recognizer.recognize_google(audio)
-            st.success(f"You said: {query}")
-            return query
-        except sr.UnknownValueError:
-            st.error("Google Speech Recognition could not understand the audio.")
-        except sr.RequestError:
-            st.error("Could not request results from Google Speech Recognition service.")
-    return None
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Please ask your question:")
+        audio = r.listen(source)
+        
+    try:
+        question = r.recognize_google(audio)
+        print(f"You said: {question}")
+        return question
+    except sr.UnknownValueError:
+        print("Sorry, I could not understand the audio.")
+        return None
+    except sr.RequestError:
+        print("Could not request results; check your network connection.")
+        return None
 
 st.title("QA Chatbot with Keyboard and Microphone Input")
 
