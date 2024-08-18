@@ -17,7 +17,7 @@ if 'question_input' not in st.session_state:
 
 st.set_page_config(page_title="QA Chatbot with BERT-Large")
 
-# Add custom CSS for background image
+# Add custom CSS for background image and centralized text
 image_path = "APP_PHOTO.jpg"  # Adjust the path as needed
 
 # Ensure the image path is valid and accessible
@@ -30,6 +30,10 @@ if os.path.isfile(image_path):
             background-size: cover;
             height: 100vh;  /* Ensure the background covers the entire viewport height */
             color: white;  /* Set default text color to white */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }}
         .sidebar .sidebar-content {{
             background: rgba(0, 0, 0, 0.3); /* Optional: to give some transparency to the sidebar */
@@ -39,6 +43,7 @@ if os.path.isfile(image_path):
             color: black; /* Set input text color to black */
             background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
             border: 1px solid white; /* White border */
+            text-align: center; /* Center text in input box */
         }}
         .stTextInput input:focus {{
             border-color: white; /* White border on focus */
@@ -47,14 +52,22 @@ if os.path.isfile(image_path):
             color: black; /* Set textarea text color to black */
             background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
             border: 1px solid white; /* White border */
+            text-align: center; /* Center text in textarea */
         }}
         .stTextArea textarea:focus {{
             border-color: white; /* White border on focus */
         }}
-          .stApp {{
+        .stMarkdown {{
+            text-align: center; /* Center text in markdown elements */
+        }}
+        .stApp {{
         background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrUp89ybesQMoGQvaHqp-2mfHiDCCtN2QDH2N49e87H6IEZD6a-qFHg5kuRXLCee7xDMc&usqp=CAU');
         background-color: rgba(0, 0, 0, 0.7);
-        }}  
+        }}
+        .stButton {{
+            display: flex;
+            justify-content: center;
+        }}
         </style>
         """,
         unsafe_allow_html=True
