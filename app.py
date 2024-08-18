@@ -96,18 +96,18 @@ with st.container():
         st.session_state.context = context_input
         st.write("Context updated.")
 
-# Toggle for showing/hiding conversation history
-with st.container():
-    if st.button("Toggle Conversation History"):
-        st.session_state.show_history = not st.session_state.show_history
+# # Toggle for showing/hiding conversation history
+# with st.container():
+#     if st.button("Toggle Conversation History"):
+#         st.session_state.show_history = not st.session_state.show_history
 
-# Display conversation history
-if st.session_state.show_history:
-    with st.container():
-        st.write("Conversation:")
-        for i, (question, answer) in enumerate(st.session_state.conversation):
-            st.write(f"Q{i+1}: {question}")
-            st.markdown(f"<div class='answer-box'>{answer}</div>", unsafe_allow_html=True)
+# # Display conversation history
+# if st.session_state.show_history:
+#     with st.container():
+#         st.write("Conversation:")
+#         for i, (question, answer) in enumerate(st.session_state.conversation):
+#             st.write(f"Q{i+1}: {question}")
+#             st.markdown(f"<div class='answer-box'>{answer}</div>", unsafe_allow_html=True)
 
 # Question input section
 with st.container():
