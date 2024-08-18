@@ -20,7 +20,7 @@ st.set_page_config(page_title="QA Chatbot with BERT-Large")
 # Add custom CSS for background image
 image_path = "APP_PHOTO.jpg"  # Adjust the path as needed
 
-# Ensure the image path is valid
+# Ensure the image path is valid and accessible
 if os.path.isfile(image_path):
     st.markdown(
         f"""
@@ -28,6 +28,7 @@ if os.path.isfile(image_path):
         .reportview-container {{
             background: url("{image_path}") no-repeat center center fixed;
             background-size: cover;
+            height: 100vh;  /* Ensure the background covers the entire viewport height */
         }}
         .sidebar .sidebar-content {{
             background: rgba(0, 0, 0, 0.3); /* Optional: to give some transparency to the sidebar */
