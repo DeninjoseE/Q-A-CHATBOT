@@ -33,7 +33,7 @@ if os.path.isfile(image_path):
         .sidebar .sidebar-content {{
             background: rgba(0, 0, 0, 0.3); /* Optional: to give some transparency to the sidebar */
         }}
-        .stApp {
+        .stApp {{
         background-image: url('https://static.vecteezy.com/system/resources/previews/025/255/711/original/chatbot-chat-with-artificial-intelligence-ai-virtual-assistant-for-user-asking-and-answer-received-service-illustration-vector.jpg');
         background-color: rgba(0, 0, 0, 0.7);
         }}
