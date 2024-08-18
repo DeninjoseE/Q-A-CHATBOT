@@ -1,4 +1,5 @@
 transformers
 streamlit
 torch
-SpeechRecognition soundfile
+SpeechRecognition 
+soundfile
