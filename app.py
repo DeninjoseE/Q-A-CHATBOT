@@ -61,7 +61,7 @@ if os.path.isfile(image_path):
             text-align: center; /* Center text in markdown elements */
         }}
         .stApp {{
-        background-image: url('https://t4.ftcdn.net/jpg/04/92/52/27/360_F_492522797_i7IS0yjoCBurMatxioz7uNgRIgw5og0L.jpg');
+        background-image: url('https://t4.ftcdn.net/jpg/04/58/75/85/360_F_458758557_wmnJE7XNEZ1fcnzzrh5QySx8gknbrDtL.jpg');
         background-color: rgba(0, 0, 0, 0.7);
         }}
         .stButton {{
