@@ -75,7 +75,7 @@ if os.path.isfile(image_path):
 else:
     st.write("Background image file not found. Please check the path.")
 
-st.title("QA Chatbot with BERT-Large")
+st.title("QA Chatbot with BERT-LLM")
 
 # Context input
 context_input = st.text_area("Set the context:", placeholder="Enter a context/paragraph(any language), then click *Update context* .")
