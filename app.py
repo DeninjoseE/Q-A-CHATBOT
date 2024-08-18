@@ -61,7 +61,7 @@ if os.path.isfile(image_path):
             text-align: center; /* Center text in markdown elements */
         }}
         .stApp {{
-        background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20201028/pngtree-yellow-question-mark-on-a-light-blue-pastel-background-3d-illustration-image_443913.jpg');
+        background-image: url('https://t4.ftcdn.net/jpg/04/92/52/27/360_F_492522797_i7IS0yjoCBurMatxioz7uNgRIgw5og0L.jpg');
         background-color: rgba(0, 0, 0, 0.7);
         }}
         .stButton {{
