@@ -1,5 +1,4 @@
 transformers
 streamlit
 torch
-SpeechRecognition
-pyaudio
+SpeechRecognition soundfile
