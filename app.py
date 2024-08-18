@@ -52,7 +52,7 @@ if os.path.isfile(image_path):
             border-color: white; /* White border on focus */
         }}
           .stApp {{
-        background-image: url('https://www.proprofschat.com/blog/wp-content/uploads/2024/05/10-Best-Chatbot-Software-for-2024.png');
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrUp89ybesQMoGQvaHqp-2mfHiDCCtN2QDH2N49e87H6IEZD6a-qFHg5kuRXLCee7xDMc&usqp=CAU');
         background-color: rgba(0, 0, 0, 0.7);
         }}  
         </style>
