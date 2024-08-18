@@ -29,14 +29,32 @@ if os.path.isfile(image_path):
             background: url("{image_path}") no-repeat center center fixed;
             background-size: cover;
             height: 100vh;  /* Ensure the background covers the entire viewport height */
+            color: white;  /* Set default text color to white */
         }}
         .sidebar .sidebar-content {{
             background: rgba(0, 0, 0, 0.3); /* Optional: to give some transparency to the sidebar */
+            color: white;  /* Set sidebar text color to white */
         }}
-        .stApp {{
+        .stTextInput input {{
+            color: black; /* Set input text color to black */
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+            border: 1px solid white; /* White border */
+        }}
+        .stTextInput input:focus {{
+            border-color: white; /* White border on focus */
+        }}
+        .stTextArea textarea {{
+            color: black; /* Set textarea text color to black */
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+            border: 1px solid white; /* White border */
+        }}
+        .stTextArea textarea:focus {{
+            border-color: white; /* White border on focus */
+        }}
+          .stApp {{
         background-image: url('https://static.vecteezy.com/system/resources/previews/025/255/711/original/chatbot-chat-with-artificial-intelligence-ai-virtual-assistant-for-user-asking-and-answer-received-service-illustration-vector.jpg');
         background-color: rgba(0, 0, 0, 0.7);
-        }}
+        }}  
         </style>
         """,
         unsafe_allow_html=True
