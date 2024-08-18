@@ -1,5 +1,6 @@
 import streamlit as st
 from transformers import pipeline
+import os
 
 # Load the QA pipeline with BERT-Large model
 qa_pipeline = pipeline("question-answering", model="bert-large-uncased-whole-word-masking-finetuned-squad")
@@ -17,20 +18,26 @@ if 'question_input' not in st.session_state:
 st.set_page_config(page_title="QA Chatbot with BERT-Large")
 
 # Add custom CSS for background image
-st.markdown(
-    """
-    <style>
-    .reportview-container {
-        background: url("https://static.vecteezy.com/system/resources/previews/025/255/711/original/chatbot-chat-with-artificial-intelligence-ai-virtual-assistant-for-user-asking-and-answer-received-service-illustration-vector.jpg") no-repeat center center fixed;
-        background-size: cover;
-    }
-    .sidebar .sidebar-content {
-        background: rgba(0, 0, 0, 0.3); /* Optional: to give some transparency to the sidebar */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+image_path = "APP_PHOTO.jpg"  # Adjust the path as needed
+
+# Ensure the image path is valid
+if os.path.isfile(image_path):
+    st.markdown(
+        f"""
+        <style>
+        .reportview-container {{
+            background: url("{image_path}") no-repeat center center fixed;
+            background-size: cover;
+        }}
+        .sidebar .sidebar-content {{
+            background: rgba(0, 0, 0, 0.3); /* Optional: to give some transparency to the sidebar */
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+else:
+    st.write("Background image file not found. Please check the path.")
 
 st.title("QA Chatbot with BERT-Large")
 
