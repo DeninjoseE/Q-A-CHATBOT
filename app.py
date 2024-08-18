@@ -74,7 +74,7 @@ if os.path.isfile(image_path):
             border-radius: 5px;
             margin: 10px 0;
             border: 1px solid white; /* White border */
-            color: white; /* Ensure text color is white */
+            color: black; /* Ensure text color is white */
             text-align: center;
         }}
         </style>
