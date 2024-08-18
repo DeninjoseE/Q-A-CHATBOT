@@ -61,7 +61,7 @@ if os.path.isfile(image_path):
             text-align: center; /* Center text in markdown elements */
         }}
         .stApp {{
-        background-image: url('https://t4.ftcdn.net/jpg/04/58/75/85/360_F_458758557_wmnJE7XNEZ1fcnzzrh5QySx8gknbrDtL.jpg');
+        background-image: url('https://c8.alamy.com/comp/KP12R0/blue-torn-paper-revealing-question-mark-symbol-on-yellow-paper-question-KP12R0.jpg');
         background-color: rgba(0, 0, 0, 0.7);
         }}
         .stButton {{
