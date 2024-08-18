@@ -11,6 +11,8 @@ if 'conversation' not in st.session_state:
     st.session_state.conversation = []
 if 'show_history' not in st.session_state:
     st.session_state.show_history = True
+if 'question_input' not in st.session_state:
+    st.session_state.question_input = ""
 
 st.title("QA Chatbot with BERT-Large")
 
@@ -32,15 +34,16 @@ if st.session_state.show_history:
         st.write(f"A{i+1}: {answer}")
 
 # Question input
-question_input = st.text_input("Ask a question:")
+st.session_state.question_input = st.text_input("Ask a question:", value=st.session_state.question_input)
 if st.button("Submit"):
     if not st.session_state.context:
         st.write("Please provide a context first.")
     else:
-        result = qa_pipeline(question=question_input, context=st.session_state.context)
-        st.session_state.conversation.append((question_input, result['answer']))
+        result = qa_pipeline(question=st.session_state.question_input, context=st.session_state.context)
+        st.session_state.conversation.append((st.session_state.question_input, result['answer']))
         st.write(f"Answer: {result['answer']}")
 
         # Option to ask another question
         if st.button("Ask Another Question"):
-            question_input = ""  # Clear the question input for the next question
+            st.session_state.question_input = ""  # Clear the question input for the next question
+            st.experimental_rerun()  # Rerun the script to clear the input box
