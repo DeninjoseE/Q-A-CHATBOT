@@ -61,7 +61,7 @@ if os.path.isfile(image_path):
             text-align: center; /* Center text in markdown elements */
         }}
         .stApp {{
-        background-image: url('https://static.vecteezy.com/system/resources/previews/013/118/475/large_2x/questions-mark-illustration-inside-of-background-for-faq-and-question-and-answer-time-free-photo.jpg');
+        background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20201028/pngtree-yellow-question-mark-on-a-light-blue-pastel-background-3d-illustration-image_443913.jpg');
         background-color: rgba(0, 0, 0, 0.7);
         }}
         .stButton {{
