@@ -21,7 +21,7 @@ st.markdown(
     """
     <style>
     .reportview-container {
-        background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGbOgI3l1ybLZe4g1B3HMKuhqgyKZiNEkn_Q&s") no-repeat center center fixed;
+        background: url("https://static.vecteezy.com/system/resources/previews/025/255/711/original/chatbot-chat-with-artificial-intelligence-ai-virtual-assistant-for-user-asking-and-answer-received-service-illustration-vector.jpg") no-repeat center center fixed;
         background-size: cover;
     }
     .sidebar .sidebar-content {
