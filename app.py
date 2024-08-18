@@ -2,7 +2,7 @@ import streamlit as st
 from transformers import pipeline
 import os
 
-# Load the QA pipeline with BERT-Large model
+# Load the QA pipeline with BERT-Language Large model
 qa_pipeline = pipeline("question-answering", model="bert-large-uncased-whole-word-masking-finetuned-squad")
 
 # Initialize context and conversation history in Streamlit session state
