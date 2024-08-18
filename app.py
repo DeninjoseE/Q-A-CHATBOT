@@ -2,7 +2,7 @@ import streamlit as st
 from transformers import pipeline
 import os
 
-# Load the QA pipeline with BERT-Language Large model
+# Load the QA pipeline with BERT-Large model
 qa_pipeline = pipeline("question-answering", model="bert-large-uncased-whole-word-masking-finetuned-squad")
 
 # Initialize context and conversation history in Streamlit session state
@@ -15,9 +15,9 @@ if 'show_history' not in st.session_state:
 if 'question_input' not in st.session_state:
     st.session_state.question_input = ""
 
-st.set_page_config(page_title="Q/A Chatbot with BERT-Language Large model")
+st.set_page_config(page_title="Q/A Chatbot with BERT-Large")
 
-# Add custom CSS for background image and centralized text
+# Add custom CSS for background image, centralized text, and answer box
 image_path = "APP_PHOTO.jpg"  # Adjust the path as needed
 
 # Ensure the image path is valid and accessible
@@ -68,6 +68,15 @@ if os.path.isfile(image_path):
             display: flex;
             justify-content: center;
         }}
+        .answer-box {{
+            background-color: rgba(255, 255, 255, 0.3); /* Transparent white background for the answer box */
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border: 1px solid white; /* White border */
+            color: white; /* Ensure text color is white */
+            text-align: center;
+        }}
         </style>
         """,
         unsafe_allow_html=True
@@ -77,34 +86,41 @@ else:
 
 st.title("QA Chatbot with BERT-LLM")
 
-# Context input
-context_input = st.text_area("Set the context:", placeholder="Enter a context/paragraph(any language), then click *Update context* .")
-if st.button("Update Context"):
-    st.session_state.context = context_input
-    st.write("Context updated.")
+# Context input section
+with st.container():
+    context_input = st.text_area(
+        "Set the context:", 
+        placeholder="Enter a context/paragraph (any language), then click *Update context* ."
+    )
+    if st.button("Update Context"):
+        st.session_state.context = context_input
+        st.write("Context updated.")
 
 # Toggle for showing/hiding conversation history
-if st.button("Toggle Conversation History"):
-    st.session_state.show_history = not st.session_state.show_history
+with st.container():
+    if st.button("Toggle Conversation History"):
+        st.session_state.show_history = not st.session_state.show_history
 
 # Display conversation history
 if st.session_state.show_history:
-    st.write("Conversation:")
-    for i, (question, answer) in enumerate(st.session_state.conversation):
-        st.write(f"Q{i+1}: {question}")
-        st.write(f"A{i+1}: {answer}")
+    with st.container():
+        st.write("Conversation:")
+        for i, (question, answer) in enumerate(st.session_state.conversation):
+            st.write(f"Q{i+1}: {question}")
+            st.markdown(f"<div class='answer-box'>{answer}</div>", unsafe_allow_html=True)
 
-# Question input
-st.session_state.question_input = st.text_input("Ask a question:", value=st.session_state.question_input)
-if st.button("Submit"):
-    if not st.session_state.context:
-        st.write("Please provide a context first.")
-    else:
-        result = qa_pipeline(question=st.session_state.question_input, context=st.session_state.context)
-        st.session_state.conversation.append((st.session_state.question_input, result['answer']))
-        st.write(f"Answer: {result['answer']}")
+# Question input section
+with st.container():
+    st.session_state.question_input = st.text_input("Ask a question:", value=st.session_state.question_input)
+    if st.button("Submit"):
+        if not st.session_state.context:
+            st.write("Please provide a context first.")
+        else:
+            result = qa_pipeline(question=st.session_state.question_input, context=st.session_state.context)
+            st.session_state.conversation.append((st.session_state.question_input, result['answer']))
+            st.markdown(f"<div class='answer-box'>Answer: {result['answer']}</div>", unsafe_allow_html=True)
 
-        # Option to ask another question
-        if st.button("Ask Another Question"):
-            st.session_state.question_input = ""  # Clear the question input for the next question
-            st.experimental_rerun()  # Rerun the script to clear the input box
+            # Option to ask another question
+            if st.button("Ask Another Question"):
+                st.session_state.question_input = ""  # Clear the question input for the next question
+                st.experimental_rerun()  # Rerun the script to clear the input box
