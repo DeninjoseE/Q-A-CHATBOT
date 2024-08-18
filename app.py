@@ -1,35 +1,44 @@
 import streamlit as st
 from transformers import pipeline
+import speech_recognition as sr
 
-# Load the QA pipeline with BERT-Large model
+# Initialize the question-answering pipeline
 qa_pipeline = pipeline("question-answering", model="bert-large-uncased-whole-word-masking-finetuned-squad")
 
-# Initialize context and conversation history in Streamlit session state
-if 'context' not in st.session_state:
-    st.session_state.context = ""
-if 'conversation' not in st.session_state:
-    st.session_state.conversation = []
+# Function to take microphone input and convert it to text
+def get_audio_input():
+    recognizer = sr.Recognizer()
+    with sr.Microphone() as source:
+        st.info("Listening...")
+        audio = recognizer.listen(source)
+        try:
+            query = recognizer.recognize_google(audio)
+            st.success(f"You said: {query}")
+            return query
+        except sr.UnknownValueError:
+            st.error("Google Speech Recognition could not understand the audio.")
+        except sr.RequestError:
+            st.error("Could not request results from Google Speech Recognition service.")
+    return None
 
-st.title("QA Chatbot with BERT-Large")
+st.title("QA Chatbot with Keyboard and Microphone Input")
 
-# Context input
-context_input = st.text_area("Set the context:", placeholder="Enter context or leave blank to keep previous context.")
-if st.button("Update Context"):
-    st.session_state.context = context_input
-    st.write("Context updated.")
+# Choose input method
+input_method = st.radio("Choose your input method:", ("Keyboard", "Microphone"))
 
-# Display conversation history
-st.write("Conversation:")
-for i, (question, answer) in enumerate(st.session_state.conversation):
-    st.write(f"Q{i+1}: {question}")
-    st.write(f"A{i+1}: {answer}")
+if input_method == "Keyboard":
+    question = st.text_input("Enter your question:")
+elif input_method == "Microphone":
+    question = get_audio_input()
 
-# Question input
-question_input = st.text_input("Ask a question:")
-if st.button("Submit"):
-    if not st.session_state.context:
-        st.write("Please provide a context first.")
-    else:
-        result = qa_pipeline(question=question_input, context=st.session_state.context)
-        st.session_state.conversation.append((question_input, result['answer']))
-        st.write(f"Answer: {result['answer']}")
+if question:
+    with st.spinner("Finding the answer..."):
+        result = qa_pipeline(question=question, context="Your context or document goes here.")
+        st.write(f"**Answer:** {result['answer']}")
+
+
+
+
+
+
+
