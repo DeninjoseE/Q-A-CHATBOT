@@ -61,7 +61,7 @@ if os.path.isfile(image_path):
             text-align: center; /* Center text in markdown elements */
         }}
         .stApp {{
-        background-image: url('https://c8.alamy.com/comp/KP12R0/blue-torn-paper-revealing-question-mark-symbol-on-yellow-paper-question-KP12R0.jpg');
+        background-image: url('https://static.vecteezy.com/system/resources/previews/007/353/692/non_2x/blue-crumpled-paper-question-mark-on-yellow-background-photo.jpg');
         background-color: rgba(0, 0, 0, 0.7);
         }}
         .stButton {{
